@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/textViewEmptyView"
+    android:text="@string/internet_message"
+    android:textSize="32sp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+
+<ImageView
+    android:layout_width="@dimen/internet_image_width"
+    android:layout_height="@dimen/internet_image_height"
+    android:layout_gravity="center"
+    app:srcCompat="@drawable/ic_signal_wifi_off_black_48px"
+    android:tint="@color/nofavorite"
+    tools:layout_editor_absoluteY="204dp"
+    android:id="@+id/imageViewEmptyView"
+    android:layout_margin="@dimen/activity_horizontal_margin" />
+</LinearLayout>

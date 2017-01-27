@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/activity_movies"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rafal.movieapp.MovieFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/popular_movies_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_margin="8dp"
+        />
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_movie"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible" />
+    <include layout="@layout/empty_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:id="@+id/emptyView" android:visibility="gone"/>
+<Button
+    android:id="@+id/searchButton"
+    android:layout_width="match_parent"
+    android:layout_margin="0dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:visibility="gone"
+    android:text="@string/turn_off_searching"
+    style="?android:attr/borderlessButtonStyle"
+    />
+</RelativeLayout>

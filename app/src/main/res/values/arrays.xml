@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_style_options">
+        <item>@string/pref_style_label_dark</item>
+        <item>@string/pref_style_label_light</item>
+    </string-array>
+
+    <string-array name="pref_style_values">
+        <item>@string/pref_style_dark</item>
+        <item>@string/pref_style_light</item>
+    </string-array>
+
+
+    <string-array name="pref_sync_frequency_titles">
+        <item>6 hours</item>
+        <item>12 hours</item>
+        <item>1 day</item>
+        <item>2 days</item>
+        <item>7 days</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>6</item>
+        <item>12</item>
+        <item>24</item>
+        <item>48</item>
+        <item>168</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="pref_sort_movie_titles">
+        <item>Date ASC</item>
+        <item>Date DESC</item>
+        <item>Title ASC</item>
+        <item>Title DESC</item>
+        <item>Popularity ASC</item>
+        <item>Popularity DESC</item>
+        <item>Vote average ASC</item>
+        <item>Vote average DESC</item>
+        <item>Vote count ASC</item>
+        <item>Vote count DESC</item>
+    </string-array>
+
+    <string-array name="pref_sort_movie_values">
+        <item>release_date.asc</item>
+        <item>release_date.desc</item>
+        <item>original_title.asc</item>
+        <item>original_title.desc</item>
+        <item>popularity.asc</item>
+        <item>popularity.desc</item>
+        <item>vote_average.asc</item>
+        <item>vote_average.desc</item>
+        <item>vote_count.asc</item>
+        <item>vote_count.desc</item>
+    </string-array>
+
+    <string-array name="pref_widget_titles">
+        <item>Movies</item>
+        <item>Serials</item>
+    </string-array>
+    <string-array name="pref_widget_values">
+        <item>Movies</item>
+        <item>Serials</item>
+    </string-array>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain resetLoader copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+
+    <ListPreference
+    android:defaultValue="24"
+    android:entries="@array/pref_sync_frequency_titles"
+    android:entryValues="@array/pref_sync_frequency_values"
+    android:key="@string/pref_key_sync"
+    android:negativeButtonText="@null"
+    android:positiveButtonText="@null"
+    android:title="@string/pref_title_sync_frequency" />
+    <ListPreference
+        android:defaultValue="@string/pref_style_default"
+        android:entries="@array/pref_style_options"
+        android:entryValues="@array/pref_style_values"
+        android:key="@string/pref_style_key"
+        android:title="@string/pref_style_label" />
+    <ListPreference
+        android:defaultValue="@string/pref_default_sort_movie"
+        android:entries="@array/pref_sort_movie_titles"
+        android:entryValues="@array/pref_sort_movie_values"
+        android:key="@string/pref_key_sort_movie"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_sort_movie" />
+    <ListPreference
+        android:defaultValue="@string/pref_default_sort_serial"
+        android:entries="@array/pref_sort_movie_titles"
+        android:entryValues="@array/pref_sort_movie_values"
+        android:key="@string/pref_key_sort_serial"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_sort_serial" />
+    <!--<ListPreference-->
+        <!--android:defaultValue="@string/pref_default_widget"-->
+        <!--android:entries="@array/pref_widget_titles"-->
+        <!--android:entryValues="@array/pref_widget_values"-->
+        <!--android:key="@string/pref_key_widget"-->
+        <!--android:negativeButtonText="@null"-->
+        <!--android:positiveButtonText="@null"-->
+        <!--android:title="@string/pref_title_widget" />-->
+    <!--<CheckBoxPreference-->
+        <!--android:defaultValue="@bool/show_notifications_by_default"-->
+        <!--android:key="@string/pref_enable_notifications_key"-->
+        <!--android:summaryOff="@string/pref_enable_notifications_false"-->
+        <!--android:summaryOn="@string/pref_enable_notifications_true"-->
+        <!--android:title="@string/pref_enable_notifications_label" />-->
+
+</PreferenceScreen>

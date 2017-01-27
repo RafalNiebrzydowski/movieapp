@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/title_favorite_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/popular_movies_label"
+        style="@style/TitleLabelFirst" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/popular_movies_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin_bottom"
+        android:background="@android:color/transparent"/>
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_movie"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        android:visibility="gone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/emptyView"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewEmptyView"
+            android:text="@string/empty_movie_favorite"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/empty_favorite_font_size" />
+
+        <ImageView
+            android:layout_width="@dimen/empty_favorite_image_size"
+            android:layout_height="@dimen/empty_favorite_image_size"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_48px"
+            android:tint="@color/nofavorite"
+            android:id="@+id/imageViewEmptyView" />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/title_favorite_serial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toprated_movies_label"
+        style="@style/TitleLabel"/>
+
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/toprated_movies_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin_bottom"
+        android:background="@android:color/transparent"/>
+
+
+
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_top_movie"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        android:visibility="gone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/emptyViewSerial"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewSerialEmptyView"
+            android:text="@string/empty_serial_favorite"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/empty_favorite_font_size" />
+
+        <ImageView
+            android:layout_width="@dimen/empty_favorite_image_size"
+            android:layout_height="@dimen/empty_favorite_image_size"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_48px"
+            android:tint="@color/nofavorite"
+            android:id="@+id/imageViewSerialEmptyView" />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

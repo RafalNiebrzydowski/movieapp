@@ -1,0 +1,33 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="small_poster_width">120dp</dimen>
+    <dimen name="small_poster_height">150dp</dimen>
+    <dimen name="imageview_width">150dp</dimen>
+    <dimen name="imageview_height">200dp</dimen>
+    <dimen name="fav_imageview_width">20dp</dimen>
+    <dimen name="fav_imageview_height">20dp</dimen>
+    <dimen name="elevation_card">8dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="padding_bottom">16dp</dimen>
+    <dimen name="year_text">24sp</dimen>
+    <dimen name="duration_text">20sp</dimen>
+    <dimen name="internet_image_width">100dp</dimen>
+    <dimen name="internet_image_height">100dp</dimen>
+    <dimen name="recycler_view_margin_bottom">8dp</dimen>
+    <dimen name="progress_bar_width">48dp</dimen>
+    <dimen name="progress_bar_height">48dp</dimen>
+    <dimen name="empty_favorite_font_size">14sp</dimen>
+    <dimen name="empty_favorite_image_size">40dp</dimen>
+    <dimen name="title_movie_item_list_height">30dp</dimen>
+    <dimen name="title_movie_item_list_font_size">12sp</dimen>
+</resources>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emptyView"
+        android:textSize="32sp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:text="@string/title_popular_movie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/popular_movies_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TitleLabelFirst" />
+    <TextView
+        android:text="@string/title_toprated_movie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/toprated_movies_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/TitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/popular_movies_list" />
+
+    <TextView
+        android:text="@string/title_popular_serial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/popular_serials_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/TitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/toprated_movies_list" />
+
+    <TextView
+        android:text="@string/title_toprated_serial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/toprated_serials_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/TitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/popular_serials_list" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/popular_serials_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/popular_serials_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin_bottom"
+        android:minHeight="@dimen/progress_bar_height"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/toprated_serials_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toprated_serials_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin_bottom"
+        android:minHeight="@dimen/progress_bar_height"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@android:color/transparent"/>
+
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_top_movie"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        app:layout_constraintTop_toBottomOf="@+id/toprated_movies_label"
+        app:layout_constraintLeft_toLeftOf="@+id/toprated_movies_list"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:layout_constraintRight_toRightOf="@+id/toprated_movies_list" />
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_movie"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        app:layout_constraintTop_toBottomOf="@+id/popular_movies_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:layout_constraintRight_toRightOf="@+id/popular_movies_list" />
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_serial"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        app:layout_constraintTop_toBottomOf="@+id/popular_serials_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/popular_serials_list"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator_top_serial"
+        android:layout_width="@dimen/progress_bar_width"
+        android:layout_height="@dimen/progress_bar_height"
+        app:layout_constraintTop_toBottomOf="@+id/toprated_serials_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/toprated_serials_list"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/toprated_movies_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toprated_movies_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin_bottom"
+        android:minHeight="@dimen/progress_bar_height"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/popular_movies_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/popular_movies_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin_bottom"
+        android:minHeight="@dimen/progress_bar_height"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@android:color/transparent"
+        />
+
+
+</android.support.constraint.ConstraintLayout>
