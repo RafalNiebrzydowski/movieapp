@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -36,6 +37,7 @@ import java.util.List;
 
 public class DetailSerialInternetActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Serial> {
     private ShareActionProvider mShareActionProvider;
+    CollapsingToolbarLayout collapsingToolbarLayout;
     private String mMovie;
     private long _id;
     Toolbar toolbar;
@@ -56,6 +58,7 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
         PreferenceUtils.changeStyle(sharedPreferences, this, mTheme);
         setContentView(R.layout.activity_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -295,7 +298,12 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
 
         }
         Space view = new Space(this);
-        toolbar.setTitle(movie.getTitle());
+        collapsingToolbarLayout.setTitle(movie.getTitle());
+        ImageView imageToolbar = (ImageView) collapsingToolbarLayout.findViewById(R.id.imageToolbar);
+        Glide.with(this)
+                .load(movie.getPoster())
+                .placeholder(R.drawable.blank)
+                .into(imageToolbar);
         layout.addView(view);
         view.getLayoutParams().height = 68;
     }

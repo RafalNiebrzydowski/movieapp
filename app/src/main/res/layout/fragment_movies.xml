@@ -5,6 +5,8 @@
     android:id="@+id/activity_movies"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="?android:colorBackground"
     tools:context="com.example.rafal.movieapp.MovieFragment">
 
     <android.support.v7.widget.RecyclerView

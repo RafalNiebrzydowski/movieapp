@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -33,6 +34,7 @@ import com.example.rafal.movieapp.utility.Utility;
 
 public class DetailSerialActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private ShareActionProvider mShareActionProvider;
+    CollapsingToolbarLayout collapsingToolbarLayout;
     private String mMovie;
     private Uri mUri;
     Toolbar toolbar;
@@ -51,6 +53,7 @@ public class DetailSerialActivity extends AppCompatActivity implements LoaderMan
         PreferenceUtils.changeStyle(sharedPreferences, this, mTheme);
         setContentView(R.layout.activity_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -163,7 +166,7 @@ public class DetailSerialActivity extends AppCompatActivity implements LoaderMan
         txtDuration.setVisibility(View.GONE);
         TextView txtVoteCount = (TextView) this.findViewById(R.id.votecount_textview);
         TextView txtVoteAverage = (TextView) this.findViewById(R.id.voteaverage_textview);
-        toolbar.setTitle(cursor.getString(cursor.getColumnIndex(MovieContract.Serial.COLUMN_TITLE)));
+        collapsingToolbarLayout.setTitle(cursor.getString(cursor.getColumnIndex(MovieContract.Serial.COLUMN_TITLE)));
         txtLastName.setText(cursor.getString(cursor.getColumnIndex(MovieContract.Serial.COLUMN_OVERVIEW)));
         txtReleaseDate.setText(Utility.getYearFromDate(cursor.getString(cursor.getColumnIndex(MovieContract.Serial.COLUMN_DATERELEASE))));
         txtVoteAverage.setText(Utility.voteAvarage(cursor.getString(cursor.getColumnIndex(MovieContract.Serial.COLUMN_VOTEAVERAGE))));
@@ -222,7 +225,11 @@ public class DetailSerialActivity extends AppCompatActivity implements LoaderMan
 
         layout.addView(view);
         view.getLayoutParams().height = 68;
-
+        ImageView imageToolbar = (ImageView) collapsingToolbarLayout.findViewById(R.id.imageToolbar);
+        Glide.with(this)
+                .load(cursor.getBlob(cursor.getColumnIndex(MovieContract.Serial.COLUMN_POSTER)))
+                .asBitmap()
+                .into(imageToolbar);
 
     }
 

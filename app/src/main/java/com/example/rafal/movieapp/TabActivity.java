@@ -6,18 +6,23 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.rafal.movieapp.adapter.movieAdapter.InternetMovieAdapter;
-import com.example.rafal.movieapp.adapter.serialAdapter.InternetSerialAdapter;
 import com.example.rafal.movieapp.adapter.movieAdapter.MovieAdapter;
+import com.example.rafal.movieapp.adapter.serialAdapter.InternetSerialAdapter;
 import com.example.rafal.movieapp.adapter.serialAdapter.SerialAdapter;
 import com.example.rafal.movieapp.data.MovieContract;
 import com.example.rafal.movieapp.utility.PreferenceUtils;
@@ -27,38 +32,94 @@ public class TabActivity extends AppCompatActivity implements ActionBar.TabListe
         InternetMovieAdapter.MovieAdapterOnClickHandler, InternetSerialAdapter.SerialAdapterOnClickHandler {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    Toolbar toolbar;
+    ImageView imageToolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
     private ViewPager mViewPager;
     private static String mTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setSupportActionBar(toolbar);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mTheme = sharedPreferences.getString(getString(R.string.pref_style_key), getString(R.string.pref_style_default));
         PreferenceUtils.changeStyle(sharedPreferences,this, mTheme);
         setContentView(R.layout.activity_tab);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle("Top movies and serials");
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        TabLayout mTabLayout= (TabLayout) findViewById(R.id.htab_tabs);
 
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mTabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+
+        /*mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
             @Override
             public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
+                if(position==0){
+                    Glide.with(MainActivity.this).load(R.drawable.onet).into(imageView);
+                    Glide.with(MainActivity.this).load(R.drawable.oneb).into(tabBg);
+                } else {
+                    Glide.with(MainActivity.this).load(R.drawable.twot).into(imageView);
+                    Glide.with(MainActivity.this).load(R.drawable.twob).into(tabBg);
+                }
+
+                imageView.invalidate();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });*/
+
+
+
+        imageToolbar = (ImageView) collapsingToolbarLayout.findViewById(R.id.imageToolbar);
+        changeImage(R.drawable.top);
+        /*final ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        */mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+
+                switch (position){
+                    case 0:
+                        changeImage(R.drawable.top);
+                        collapsingToolbarLayout.setTitle("Top movies and serials");
+                        break;
+                    case 1:
+                        changeImage(R.drawable.favorite);
+                        collapsingToolbarLayout.setTitle("Favorite");
+                        break;
+                    case 2:
+                        changeImage(R.drawable.movie);
+                        collapsingToolbarLayout.setTitle("Movies");
+                        break;
+                    case 3:
+                        changeImage(R.drawable.serial);
+                        collapsingToolbarLayout.setTitle("Serials");
+                        break;
+                }
             }
         });
 
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+       /* for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             actionBar.addTab(
                     actionBar.newTab()
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
-        }
+        }*/
         Bundle extras = getIntent().getExtras();
         if(extras!=null){
             int nr = extras.getInt("pos");
@@ -66,6 +127,12 @@ public class TabActivity extends AppCompatActivity implements ActionBar.TabListe
         }
     }
 
+    private void changeImage(int id){
+        Glide.with(this)
+                .load(id)
+                .asBitmap()
+                .into(imageToolbar);
+    }
     public void switchTab(int tab){
         mViewPager.setCurrentItem(tab);
     }

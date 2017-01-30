@@ -62,6 +62,7 @@ public class TaskUtility {
 
 
         String image = "http://image.tmdb.org/t/p/w342" + film.getString("poster_path");
+        String poster = "http://image.tmdb.org/t/p/w600" + film.getString("backdrop_path");
         if (runtime == null) {
             runtime = "0";
         }
@@ -69,7 +70,7 @@ public class TaskUtility {
         ArrayList<String> keys = fetchVideoMovieTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, film.getInt("id")).get();
 
 
-        return new Movie(film.getInt("id"), film.getString("title"), film.getString("overview"), film.getString("release_date"), film.getInt("vote_count"), film.getDouble("vote_average"), 0, image, Integer.parseInt(runtime), keys);
+        return new Movie(film.getInt("id"), film.getString("title"), film.getString("overview"), film.getString("release_date"), film.getInt("vote_count"), film.getDouble("vote_average"), 0, image, poster, Integer.parseInt(runtime), keys);
 
     }
 
@@ -78,6 +79,7 @@ public class TaskUtility {
 
 
         String image = "http://image.tmdb.org/t/p/w342" + film.getString("poster_path");
+        String poster = "http://image.tmdb.org/t/p/w600" + film.getString("backdrop_path");
         int numberSeason = film.getInt("number_of_seasons");
         List<Season> seasons = new ArrayList<Season>();
         for (int i = 1; i <= numberSeason; i++) {
@@ -85,7 +87,7 @@ public class TaskUtility {
             seasons.add(new Season(i, fetchSeasonEpisodeTask.execute(film.getInt("id")).get()));
         }
 
-        return new Serial(film.getInt("id"), film.getString("name"), film.getString("overview"), film.getString("first_air_date"), film.getInt("vote_count"), film.getDouble("vote_average"), 0, image, seasons);
+        return new Serial(film.getInt("id"), film.getString("name"), film.getString("overview"), film.getString("first_air_date"), film.getInt("vote_count"), film.getDouble("vote_average"), 0, image, poster, seasons);
     }
 
     public static List<Movie> getJSONMovieInternet(String response, Context context) throws JSONException, ExecutionException, InterruptedException {
@@ -178,6 +180,7 @@ public class TaskUtility {
 
             FetchImageTask fetchImageTask = new FetchImageTask(context);
             byte[] image = null;
+            byte[] poster = null;
             if (!film.getString("poster_path").equals("null"))
                 image = fetchImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w342" + film.getString("poster_path")).get();
            /* else {
@@ -188,8 +191,11 @@ public class TaskUtility {
                 image = stream.toByteArray();
 
             }*/
-
+            FetchImageTask fetchImageTask2 = new FetchImageTask(context);
+            if (!film.getString("backdrop_path").equals("null"))
+                poster = fetchImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w600" + film.getString("backdrop_path")).get();
             values.put(MovieContract.Movie.COLUMN_IMAGE, image);
+            values.put(MovieContract.Movie.COLUMN_POSTER,poster);
             values.put(MovieContract.Movie.COLUMN_DATERELEASE, film.getString("release_date"));
             values.put(MovieContract.Movie.COLUMN_FAVORITE, 0);
             values.put(MovieContract.Movie.COLUMN_VOTECOUNT, film.getInt("vote_count"));
@@ -226,7 +232,11 @@ public class TaskUtility {
             }
         }
 
-        for (Integer id : ids) {
+        for (
+                Integer id
+                : ids)
+
+        {
             FetchVideoMovieTask fetchVideoMovieTask = new FetchVideoMovieTask(context);
             ArrayList<String> keys = fetchVideoMovieTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, id).get();
             if (keys != null) {
@@ -244,7 +254,11 @@ public class TaskUtility {
                 }
             }
         }
-        context.getContentResolver().notifyChange(MovieContract.Movie.CONTENT_URI, null);
+
+        context.getContentResolver().
+
+                notifyChange(MovieContract.Movie.CONTENT_URI, null);
+
     }
 
     public static void getJSONSerial(String response, Context context, String path) throws JSONException, ExecutionException, InterruptedException {
@@ -265,6 +279,7 @@ public class TaskUtility {
 
             FetchImageTask fetchImageTask = new FetchImageTask(context);
             byte[] image = null;
+            byte[] poster = null;
             if (!film.getString("poster_path").equals("null"))
                 image = fetchImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w342" + film.getString("poster_path")).get();
        /* else {
@@ -275,7 +290,11 @@ public class TaskUtility {
             image = stream.toByteArray();
 
         }*/
+            FetchImageTask fetchImageTask2 = new FetchImageTask(context);
+            if (!film.getString("backdrop_path").equals("null"))
+                poster = fetchImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w600" + film.getString("backdrop_path")).get();
             values.put(MovieContract.Serial.COLUMN_IMAGE, image);
+            values.put(MovieContract.Serial.COLUMN_POSTER,poster);
             values.put(MovieContract.Serial.COLUMN_DATERELEASE, film.getString("first_air_date"));
             values.put(MovieContract.Serial.COLUMN_FAVORITE, 0);
             values.put(MovieContract.Serial.COLUMN_VOTECOUNT, film.getInt("vote_count"));

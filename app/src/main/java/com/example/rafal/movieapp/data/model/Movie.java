@@ -19,7 +19,7 @@ public class Movie extends Video implements Serializable {
         this.image = image;
     }
 
-    public Movie(int id, String title, String overview, String dateRelease, int voteCount, double voteAverage, int favorite, String image, int duration, ArrayList<String> video) {
+    public Movie(int id, String title, String overview, String dateRelease, int voteCount, double voteAverage, int favorite, String image, String poster, int duration, ArrayList<String> video) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -30,6 +30,7 @@ public class Movie extends Video implements Serializable {
         this.image = image;
         this.duration = duration;
         this.video = video;
+        this.poster = poster;
     }
 
 

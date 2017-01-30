@@ -39,6 +39,7 @@ public class MovieContract {
         public static final String COLUMN_POPULAR = "popular";
         public static final String COLUMN_TOPRATED = "top_rated";
         public static final String COLUMN_IMAGE = "image";
+        public static final String COLUMN_POSTER = "poster";
 
 
         public static Uri buildMovieWithID(long _id) {
@@ -61,7 +62,8 @@ public class MovieContract {
                 Movie.COLUMN_FAVORITE + " INTEGER, " +
                 Movie.COLUMN_POPULAR + " INTEGER, " +
                 Movie.COLUMN_TOPRATED + " INTEGER, " +
-                Movie.COLUMN_IMAGE + " BLOB " +
+                Movie.COLUMN_IMAGE + " BLOB, " +
+                Movie.COLUMN_POSTER + " BLOB " +
                 ")";
 
         public static final String DROP_TABLE_MOVIE = "DROP TABLE IF EXISTS " + Movie.TABLE_NAME;
@@ -124,7 +126,7 @@ public class MovieContract {
         public static final String COLUMN_POPULAR = "popular";
         public static final String COLUMN_TOPRATED = "top_rated";
         public static final String COLUMN_IMAGE = "image";
-
+        public static final String COLUMN_POSTER = "poster";
 
         public static Uri buildSerialWithID(long _id) {
             return ContentUris.withAppendedId(CONTENT_URI, _id);
@@ -145,7 +147,8 @@ public class MovieContract {
                 Serial.COLUMN_FAVORITE + " INTEGER, " +
                 Serial.COLUMN_POPULAR + " INTEGER, " +
                 Serial.COLUMN_TOPRATED + " INTEGER, " +
-                Serial.COLUMN_IMAGE + " BLOB " +
+                Serial.COLUMN_IMAGE + " BLOB, " +
+                Serial.COLUMN_POSTER + " BLOB " +
                 ")";
 
         public static final String DROP_TABLE_SERIAL = "DROP TABLE IF EXISTS " + Serial.TABLE_NAME;

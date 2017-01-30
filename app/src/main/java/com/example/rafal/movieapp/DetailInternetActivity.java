@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -32,6 +33,7 @@ import com.example.rafal.movieapp.utility.Utility;
 
 public class DetailInternetActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Movie> {
     private ShareActionProvider mShareActionProvider;
+    CollapsingToolbarLayout collapsingToolbarLayout;
     private String mMovie;
     private long _id;
     Toolbar toolbar;
@@ -52,6 +54,7 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
         PreferenceUtils.changeStyle(sharedPreferences, this, mTheme);
         setContentView(R.layout.activity_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -234,7 +237,7 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
             return;
         }
         this.movie = movie;
-        toolbar.setTitle(movie.getTitle());
+        collapsingToolbarLayout.setTitle(movie.getTitle());
         TextView overviewTextView = (TextView) this.findViewById(R.id.overview_textview);
         ImageView posterTextView = (ImageView) this.findViewById(R.id.poster_imageview);
         TextView dateTextView = (TextView) this.findViewById(R.id.year_textview);
@@ -288,6 +291,11 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
                 }
             });
             listView.setAdapter(trailerAdapter);
+            ImageView imageToolbar = (ImageView) collapsingToolbarLayout.findViewById(R.id.imageToolbar);
+            Glide.with(this)
+                    .load(movie.getPoster())
+                    .placeholder(R.drawable.blank)
+                    .into(imageToolbar);
         }
     }
 

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -34,6 +35,7 @@ import com.example.rafal.movieapp.utility.Utility;
 
 public class DetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private ShareActionProvider mShareActionProvider;
+    CollapsingToolbarLayout collapsingToolbarLayout;
     private String mMovie;
     private Uri mUri;
     Toolbar toolbar;
@@ -55,7 +57,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         mUri = getIntent().getData();
@@ -167,7 +169,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         TextView durationTextView = (TextView) this.findViewById(R.id.duration_textview);
         TextView voteCountTextView = (TextView) this.findViewById(R.id.votecount_textview);
         TextView voteAverageTextView = (TextView) this.findViewById(R.id.voteaverage_textview);
-        toolbar.setTitle(cursor.getString(cursor.getColumnIndex(MovieContract.Movie.COLUMN_TITLE)));
+        collapsingToolbarLayout.setTitle(cursor.getString(cursor.getColumnIndex(MovieContract.Movie.COLUMN_TITLE)));
         overviewTextView.setText(cursor.getString(cursor.getColumnIndex(MovieContract.Movie.COLUMN_OVERVIEW)));
         dateTextView.setText(Utility.getYearFromDate(cursor.getString(cursor.getColumnIndex(MovieContract.Movie.COLUMN_DATERELEASE))));
         durationTextView.setText(Utility.addMinsToDuration(Integer.toString(cursor.getInt(cursor.getColumnIndex(MovieContract.Movie.COLUMN_DURATION)))));
@@ -204,7 +206,12 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             }
         });
         listView.setAdapter(trailerCursorAdapter);
-        toolbar.setBackground(posterImageView.getDrawable());
+        ImageView imageToolbar = (ImageView) collapsingToolbarLayout.findViewById(R.id.imageToolbar);
+        Glide.with(this)
+                .load(cursor.getBlob(cursor.getColumnIndex(MovieContract.Movie.COLUMN_POSTER)))
+                .asBitmap()
+                .into(imageToolbar);
+      //  collapsingToolbarLayout.setBackground(posterImageView.getDrawable());
     }
 
     @Override

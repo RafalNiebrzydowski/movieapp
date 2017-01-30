@@ -11,7 +11,7 @@ public class Serial extends Video implements Serializable {
 
 
 
-    public List<Season> seasons;
+    private List<Season> seasons;
 
     public Serial(int id, String title, String image) {
         this.id = id;
@@ -19,7 +19,7 @@ public class Serial extends Video implements Serializable {
         this.image = image;
     }
 
-    public Serial(int id, String title, String overview, String dateRelease, int voteCount, double voteAverage, int favorite,String image, List<Season> seasons) {
+    public Serial(int id, String title, String overview, String dateRelease, int voteCount, double voteAverage, int favorite,String image, String poster, List<Season> seasons) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -29,6 +29,7 @@ public class Serial extends Video implements Serializable {
         this.favorite = favorite;
         this.image = image;
         this.seasons = seasons;
+        this.poster = poster;
     }
 
     public List<Season> getSeasons() {

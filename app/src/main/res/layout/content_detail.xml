@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:paddingBottom="@dimen/padding_bottom"
-    android:background="?attr/colorBackgroundFloating"
+    android:background="?android:colorBackground"
     tools:context="com.example.rafal.movieapp.DetailActivity"
     tools:showIn="@layout/activity_detail">
 

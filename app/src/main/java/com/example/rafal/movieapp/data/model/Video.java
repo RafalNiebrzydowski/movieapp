@@ -15,6 +15,7 @@ public abstract class Video  implements Serializable {
     protected double voteAverage;
     protected int favorite;
     protected String image;
+    protected String poster;
     public int getId() {
         return id;
     }
@@ -77,5 +78,13 @@ public abstract class Video  implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 }
