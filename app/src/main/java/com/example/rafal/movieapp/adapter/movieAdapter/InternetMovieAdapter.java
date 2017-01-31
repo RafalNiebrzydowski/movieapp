@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.rafal.movieapp.R;
-import com.example.rafal.movieapp.utility.Utility;
-import com.example.rafal.movieapp.data.model.Movie;
 import com.example.rafal.movieapp.data.MovieContract;
+import com.example.rafal.movieapp.data.model.Movie;
+import com.example.rafal.movieapp.utility.Utility;
 
 import java.util.List;
 
@@ -144,6 +144,7 @@ public class InternetMovieAdapter extends RecyclerView.Adapter<InternetMovieAdap
             Movie movie = movieList.get(adapterPosition);
             long _id = movie.getId();
             mClickHandler.onClickMovie(_id);
+
         }
     }
 }

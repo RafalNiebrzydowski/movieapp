@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.rafal.movieapp.DetailActivity">
+    tools:context="com.example.rafal.movieapp.D">
     <item android:id="@+id/action_share"
         android:title="@string/action_share"
         app:showAsAction="always"
@@ -11,4 +11,5 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
 </menu>

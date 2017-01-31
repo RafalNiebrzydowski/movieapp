@@ -15,6 +15,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -22,6 +23,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -70,6 +72,7 @@ public class MovieFragment extends Fragment implements
         }
     };
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -96,6 +99,7 @@ public class MovieFragment extends Fragment implements
         Resources.Theme theme = getActivity().getTheme();
         theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
         int color = typedValue.data;
+
         searchButton.setBackgroundColor(color);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,14 +151,14 @@ public class MovieFragment extends Fragment implements
         getLoaderManager().restartLoader(ID_MOVIE_LOADER, null, this).forceLoad();
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     public void onCreateOptionsMenu(final Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.main_fragment_movie, menu);
+        MenuItem menuItem = menu.findItem(R.id.searchMovie);
         final SearchView searchView =
-                (SearchView) menu.findItem(R.id.searchMovie).getActionView();
+                (SearchView) MenuItemCompat.getActionView(menuItem);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -176,17 +180,13 @@ public class MovieFragment extends Fragment implements
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                return true;
             }
         });
+
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-//                position=1;
-//                isSearch = false;
-//                internetMovieAdapter.clearCursor();
-//                resetLoader();
-//                searchButton.setVisibility(View.GONE);
                 return false;
             }
         });
@@ -284,4 +284,5 @@ public class MovieFragment extends Fragment implements
             resetLoader();
         }
     }
+
 }

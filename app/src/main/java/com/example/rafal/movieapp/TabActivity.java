@@ -41,7 +41,7 @@ public class TabActivity extends AppCompatActivity implements ActionBar.TabListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mTheme = sharedPreferences.getString(getString(R.string.pref_style_key), getString(R.string.pref_style_default));
         PreferenceUtils.changeStyle(sharedPreferences,this, mTheme);
@@ -53,7 +53,6 @@ public class TabActivity extends AppCompatActivity implements ActionBar.TabListe
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         TabLayout mTabLayout= (TabLayout) findViewById(R.id.htab_tabs);
-
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mTabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);

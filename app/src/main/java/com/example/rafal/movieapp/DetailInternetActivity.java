@@ -47,16 +47,18 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mTheme = sharedPreferences.getString(getString(R.string.pref_style_key), getString(R.string.pref_style_default));
         PreferenceUtils.changeStyle(sharedPreferences, this, mTheme);
         setContentView(R.layout.activity_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle(" ");
         fab = (FloatingActionButton) findViewById(R.id.fab);
         _id = getIntent().getLongExtra(Intent.EXTRA_TEXT, -1);
 
@@ -72,21 +74,7 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
                     String[] selectionArgs = {Long.toString(_id)};
                     String selection2 = MovieContract.Movie.COLUMN_ID + "= ?";
                     Utility.removeFromFavoriteFromInternet(view.getContext(), _id, view, contentValues,selection,selection2, MovieContract.Movie.CONTENT_URI);
-                   /* int uri = getContentResolver().delete(MovieContract.Movie.CONTENT_URI, selection, selectionArgs);
-                    if (uri == 0) {
 
-
-                        String selection2 = MovieContract.Movie.COLUMN_ID + "= ?";
-                        String[] selectionArgs2 = {Long.toString(_id)};
-                        getContentResolver().update(MovieContract.Movie.CONTENT_URI, contentValues, selection2, selectionArgs2);
-                    }
-                    Snackbar snackbar;
-                    snackbar = Snackbar.make(view, "Removed movie from favorite", Snackbar.LENGTH_LONG);
-                    View snackBarView = snackbar.getView();
-                    snackBarView.setBackgroundColor(getResources().getColor(android.R.color.white));
-                    TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-                    textView.setTextColor(getResources().getColor(android.R.color.black));
-                    snackbar.show();*/
                     isFavorite = 0;
                     fab.setImageResource(R.drawable.ic_favorite_border_white_24dp);
                 } else {
@@ -95,77 +83,12 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
                     String selection = MovieContract.Movie.COLUMN_ID + "= ?";
                     String[] selectionArgs = {Long.toString(_id)};
                     Utility.addToFavoriteFromInternet(view.getContext(), _id, view, contentValues, selection, MovieContract.Movie.CONTENT_URI,true);
-//                    Cursor cursor = getContentResolver().query(MovieContract.Movie.buildMovieWithID(_id), null, null, null, null);
-//                    if (cursor.moveToFirst()) {
-//                        if (cursor.getInt(cursor.getColumnIndex(MovieContract.Movie.COLUMN_FAVORITE)) == 0) {
-//                            ContentValues contentValues = new ContentValues();
-//                            contentValues.put(MovieContract.Movie.COLUMN_FAVORITE, 1);
-//                            String selection = MovieContract.Movie.COLUMN_ID + "= ?";
-//                            String[] selectionArgs = {Long.toString(_id)};
-//                            getContentResolver().update(MovieContract.Movie.CONTENT_URI, contentValues, selection, selectionArgs);
-//                        }
-//                    } else {
-//                        ContentValues contentValues = new ContentValues();
-//                        contentValues.put(MovieContract.Movie.COLUMN_ID, _id);
-//                        contentValues.put(MovieContract.Movie.COLUMN_TITLE, movie.getTitle());
-//                        contentValues.put(MovieContract.Movie.COLUMN_OVERVIEW, movie.getOverview());
-//                        contentValues.put(MovieContract.Movie.COLUMN_DATERELEASE, movie.getDateRelease());
-//                        contentValues.put(MovieContract.Movie.COLUMN_DURATION, movie.getDuration());
-//                        contentValues.put(MovieContract.Movie.COLUMN_VOTECOUNT, movie.getVoteCount());
-//                        contentValues.put(MovieContract.Movie.COLUMN_VOTEAVERAGE, movie.getVoteAverage());
-//                        contentValues.put(MovieContract.Movie.COLUMN_IMAGE, movie.getImage());
-//                        contentValues.put(MovieContract.Movie.COLUMN_FAVORITE, 1);
-//                        contentValues.put(MovieContract.Movie.COLUMN_POPULAR, 0);
-//                        contentValues.put(MovieContract.Movie.COLUMN_TOPRATED, 0);
-//                        Uri uri = getContentResolver().insert(MovieContract.Movie.CONTENT_URI, contentValues);
-//                        ArrayList<String> keys = movie.getVideo();
-//                        if (keys != null) {
-//                            Vector<ContentValues> cVVectorVideo = new Vector<ContentValues>(keys.size());
-//                            for (String s : keys) {
-//                                ContentValues contentValues2 = new ContentValues();
-//                                contentValues2.put(MovieContract.VideoMovie.COLUMN_ID, _id);
-//                                contentValues2.put(MovieContract.VideoMovie.COLUMN_KEY, s);
-//                                cVVectorVideo.add(contentValues2);
-//                            }
-//                            if (cVVectorVideo.size() > 0) {
-//                                ContentValues[] cvArray = new ContentValues[cVVectorVideo.size()];
-//                                cVVectorVideo.toArray(cvArray);
-//                                getContentResolver().bulkInsert(MovieContract.VideoMovie.CONTENT_URI, cvArray);
-//                            }
-//                        }
-//                    }
-//
-//
-//                    Snackbar snackbar;
-//                    snackbar = Snackbar.make(view, "Added movie to favorite", Snackbar.LENGTH_LONG).setAction("Favorite", new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Bundle b = new Bundle();
-//                            b.putInt("pos", 1);
-//                            startActivity(new Intent(v.getContext(), TabActivity.class).putExtras(b));
-//                        }
-//                    });
-//                    View snackBarView = snackbar.getView();
-//                    TypedValue typedValue = new TypedValue();
-//                    Resources.Theme theme = getTheme();
-//                    theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
-//                    int color = typedValue.data;
-//                    snackBarView.setBackgroundColor(color);
-//                    TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    textView.setTextColor(getResources().getColor(android.R.color.black));
-//                    snackbar.show();
 
                     isFavorite = 1;
                     fab.setImageResource(R.drawable.ic_favorite_white_24dp);
                 }
 
 
-//                Snackbar.make(view, "Added movie to favorite", Snackbar.LENGTH_LONG)
-//                        .setAction("Favorite", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                            }
-//                        }).show();
             }
         });
 
@@ -179,9 +102,8 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
         MenuItem menuItem = menu.findItem(R.id.action_share);
 
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        if (mMovie != null) {
-            mShareActionProvider.setShareIntent(createShareMovieIntent());
-        }
+
+
         return true;
     }
 
@@ -297,6 +219,7 @@ public class DetailInternetActivity extends AppCompatActivity implements LoaderM
                     .placeholder(R.drawable.blank)
                     .into(imageToolbar);
         }
+        mShareActionProvider.setShareIntent(createShareMovieIntent());
     }
 
     @Override

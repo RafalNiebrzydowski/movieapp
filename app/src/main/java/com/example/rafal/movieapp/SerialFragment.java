@@ -183,6 +183,7 @@ public class SerialFragment extends Fragment implements
                 return false;
             }
 
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;

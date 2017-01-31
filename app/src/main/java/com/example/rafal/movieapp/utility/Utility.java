@@ -315,12 +315,12 @@ public class Utility {
     }
 
     public static void showViews(RecyclerView recyclerView, ProgressBar progressBar){
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
     }
 
     public static void showLoading(RecyclerView recyclerView, ProgressBar progressBar){
-        recyclerView.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
     }
 

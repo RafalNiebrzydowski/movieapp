@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:id="@+id/activity_movies"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="?android:colorBackground"
     tools:context="com.example.rafal.movieapp.MovieFragment">
 
@@ -14,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:layout_margin="8dp"
-        />
+        android:layout_margin="8dp" />
+
     <ProgressBar
         android:id="@+id/pb_loading_indicator_movie"
         android:layout_width="@dimen/progress_bar_width"
@@ -24,15 +22,22 @@
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:visibility="invisible" />
-    <include layout="@layout/empty_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:id="@+id/emptyView" android:visibility="gone"/>
-<Button
-    android:id="@+id/searchButton"
-    android:layout_width="match_parent"
-    android:layout_margin="0dp"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:visibility="gone"
-    android:text="@string/turn_off_searching"
-    style="?android:attr/borderlessButtonStyle"
-    />
+
+    <include
+        android:id="@+id/emptyView"
+        layout="@layout/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/searchButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/turn_off_searching"
+        android:visibility="gone" />
 </RelativeLayout>

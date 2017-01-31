@@ -15,7 +15,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -88,7 +87,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
             }
         });
-        NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+        //NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
         getSupportLoaderManager().initLoader(ID_DETAILMOVIE_LOADER, null, this);
     }
 
@@ -102,6 +101,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         if (mMovie != null) {
             mShareActionProvider.setShareIntent(createShareMovieIntent());
         }
+
         return true;
     }
 

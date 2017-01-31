@@ -52,7 +52,7 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mTheme = sharedPreferences.getString(getString(R.string.pref_style_key), getString(R.string.pref_style_default));
         PreferenceUtils.changeStyle(sharedPreferences, this, mTheme);
@@ -85,71 +85,7 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
                     String selection = MovieContract.Serial.COLUMN_ID + "= ?";
                     String[] selectionArgs = {Long.toString(_id)};
                     Utility.addToFavoriteFromInternet(view.getContext(), _id, view, contentValues,selection, MovieContract.Serial.CONTENT_URI,false);
-//                    Cursor cursor = getContentResolver().query(MovieContract.Serial.buildSerialWithID(_id), null, null, null, null);
-//                    if (cursor.moveToFirst()) {
-//                        if (cursor.getInt(cursor.getColumnIndex(MovieContract.Serial.COLUMN_FAVORITE)) == 0) {
-//                            ContentValues contentValues = new ContentValues();
-//                            contentValues.put(MovieContract.Serial.COLUMN_FAVORITE, 1);
-//                            String selection = MovieContract.Serial.COLUMN_ID + "= ?";
-//                            String[] selectionArgs = {Long.toString(_id)};
-//                            getContentResolver().update(MovieContract.Serial.CONTENT_URI, contentValues, selection, selectionArgs);
-//                        }
-//                    } else {
-//                        ContentValues contentValues = new ContentValues();
-//                        contentValues.put(MovieContract.Serial.COLUMN_ID, _id);
-//                        contentValues.put(MovieContract.Serial.COLUMN_TITLE, serial.getTitle());
-//                        contentValues.put(MovieContract.Serial.COLUMN_OVERVIEW, serial.getOverview());
-//                        contentValues.put(MovieContract.Serial.COLUMN_DATERELEASE, serial.getDateRelease());
-//                        contentValues.put(MovieContract.Serial.COLUMN_VOTECOUNT, serial.getVoteCount());
-//                        contentValues.put(MovieContract.Serial.COLUMN_VOTEAVERAGE, serial.getVoteAverage());
-//                        contentValues.put(MovieContract.Serial.COLUMN_IMAGE, serial.getImage());
-//                        contentValues.put(MovieContract.Serial.COLUMN_FAVORITE, 1);
-//                        contentValues.put(MovieContract.Serial.COLUMN_POPULAR, 0);
-//                        contentValues.put(MovieContract.Serial.COLUMN_TOPRATED, 0);
-//                        Uri uri = getContentResolver().insert(MovieContract.Serial.CONTENT_URI, contentValues);
-//                        ArrayList<Integer> ids = new ArrayList<>();
-//                        if (serial != null)
-//                            for (int restartLoader = 0; restartLoader < serial.getSeasons().size(); restartLoader++) {
-//                                ContentValues values1 = new ContentValues();
-//                                values1.put(MovieContract.Season.COLUMN_ID, _id);
-//                                values1.put(MovieContract.Season.COLUMN_NUMBER, restartLoader);
-//                                Uri uri2 = getContentResolver().insert(MovieContract.Season.CONTENT_URI, values1);
-//
-//                                ids.add(Integer.parseInt(Long.toString(MovieContract.Season.getIdFromUri(uri2))));
-//
-//
-//                            }
-//                        for (int restartLoader = 0; restartLoader < ids.size(); restartLoader++) {
-//                            if (serial.getSeasons().get(restartLoader).getEpisodes() != null)
-//                                for (Episode e : serial.getSeasons().get(restartLoader).getEpisodes()) {
-//                                    ContentValues values2 = new ContentValues();
-//                                    values2.put(MovieContract.Epsiode.COLUMN_ID, ids.get(restartLoader));
-//                                    values2.put(MovieContract.Epsiode.COLUMN_TITLE, e.getTitle());
-//                                    values2.put(MovieContract.Epsiode.COLUMN_DATERELEASE, e.getDate());
-//                                    getContentResolver().insert(MovieContract.Epsiode.CONTENT_URI, values2);
-//                                }
-//                        }
-//                    }
-//
-//
-//                    Snackbar snackbar;
-//                    snackbar = Snackbar.make(view, "Added movie to favorite", Snackbar.LENGTH_LONG).setAction("Favorite", new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Bundle b = new Bundle();
-//                            b.putInt("pos", 1);
-//                            startActivity(new Intent(v.getContext(), TabActivity.class).putExtras(b));
-//                        }
-//                    });
-//                    View snackBarView = snackbar.getView();
-//                    TypedValue typedValue = new TypedValue();
-//                    Resources.Theme theme = getTheme();
-//                    theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
-//                    int color = typedValue.data;
-//                    snackBarView.setBackgroundColor(color);
-//                    TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-//                    textView.setTextColor(getResources().getColor(android.R.color.black));
-//                    snackbar.show();
+
 
                     isFavorite = 1;
                     fab.setImageResource(R.drawable.ic_favorite_white_24dp);
@@ -190,11 +126,9 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
 
         getMenuInflater().inflate(R.menu.menu_detail, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
-
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        if (mMovie != null) {
-            mShareActionProvider.setShareIntent(createShareMovieIntent());
-        }
+
+
         return true;
     }
 
@@ -243,7 +177,7 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
                 .load(movie.getImage())
                 .placeholder(R.drawable.blank)
                 .into(posterImageView);
-        mMovie = movie.getTitle() + " " + dateTextView.getText();
+
         Cursor cursor = getContentResolver().query(MovieContract.Serial.buildSerialWithID(_id), null, null, null, null);
         if (cursor.moveToFirst()) {
             if (cursor.getInt(cursor.getColumnIndex(MovieContract.Serial.COLUMN_FAVORITE)) == 0) {
@@ -253,7 +187,6 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
         } else {
             isFavorite = 0;
         }
-        mMovie = movie.getTitle() + " " + movie.getDateRelease();
         if (isFavorite == 1) {
             fab.setImageResource(R.drawable.ic_favorite_white_24dp);
         } else
@@ -306,6 +239,9 @@ public class DetailSerialInternetActivity extends AppCompatActivity implements L
                 .into(imageToolbar);
         layout.addView(view);
         view.getLayoutParams().height = 68;
+        mMovie = movie.getTitle() + " " + dateTextView.getText();
+
+        mShareActionProvider.setShareIntent(createShareMovieIntent());
     }
 
     @Override

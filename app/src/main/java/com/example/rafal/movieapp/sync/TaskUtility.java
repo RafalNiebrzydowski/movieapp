@@ -183,14 +183,7 @@ public class TaskUtility {
             byte[] poster = null;
             if (!film.getString("poster_path").equals("null"))
                 image = fetchImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w342" + film.getString("poster_path")).get();
-           /* else {
-                Drawable d = context.getResources().getDrawable(R.drawable.blank);
-                Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                image = stream.toByteArray();
 
-            }*/
             FetchImageTask fetchImageTask2 = new FetchImageTask(context);
             if (!film.getString("backdrop_path").equals("null"))
                 poster = fetchImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w600" + film.getString("backdrop_path")).get();
@@ -230,6 +223,7 @@ public class TaskUtility {
                     }
                 }
             }
+            cursor.close();
         }
 
         for (
@@ -282,14 +276,7 @@ public class TaskUtility {
             byte[] poster = null;
             if (!film.getString("poster_path").equals("null"))
                 image = fetchImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w342" + film.getString("poster_path")).get();
-       /* else {
-            Drawable d = mContext.getResources().getDrawable(R.drawable.blank);
-            Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            image = stream.toByteArray();
 
-        }*/
             FetchImageTask fetchImageTask2 = new FetchImageTask(context);
             if (!film.getString("backdrop_path").equals("null"))
                 poster = fetchImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "http://image.tmdb.org/t/p/w600" + film.getString("backdrop_path")).get();
@@ -315,6 +302,7 @@ public class TaskUtility {
                 }
 
             }
+            cursor.close();
             FetchSeasonTask fetchSerialIdTask = new FetchSeasonTask(context, film.getInt("id"));
             List<Season> serial = fetchSerialIdTask.loadInBackground();
 
@@ -351,6 +339,7 @@ public class TaskUtility {
                     }
 
                 }
+                cursorSeason.close();
             }
         }
         context.getContentResolver().notifyChange(MovieContract.Serial.CONTENT_URI, null);

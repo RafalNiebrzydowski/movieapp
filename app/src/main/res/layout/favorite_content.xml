@@ -14,7 +14,7 @@
         style="@style/TitleLabelFirst" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/popular_movies_list"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -56,20 +56,14 @@
         android:id="@+id/toprated_movies_label"
         style="@style/TitleLabel"/>
 
-
-
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/toprated_movies_list"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/recycler_view_margin_bottom"
         android:background="@android:color/transparent"/>
-
-
 
     <ProgressBar
         android:id="@+id/pb_loading_indicator_top_movie"
