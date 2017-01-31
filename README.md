@@ -2,10 +2,10 @@
 Training android app using the moviedb api
 
 ##Screenshots
-![device-2017-01-31-154711](https://cloud.githubusercontent.com/assets/25387287/22469732/4bfa9fea-e7cd-11e6-934f-da606c4089d5.png)
-![device-2017-01-31-154835](https://cloud.githubusercontent.com/assets/25387287/22469746/57f1b5d6-e7cd-11e6-8536-144b506d0519.png)
-![device-2017-01-31-154903](https://cloud.githubusercontent.com/assets/25387287/22469748/57f77df4-e7cd-11e6-83ef-4275ab339d1b.png)
-![device-2017-01-31-154930](https://cloud.githubusercontent.com/assets/25387287/22469747/57f6c62a-e7cd-11e6-818e-adae5749dd35.png)
-![device-2017-01-31-155013](https://cloud.githubusercontent.com/assets/25387287/22469749/57fa1640-e7cd-11e6-917a-1d60fbdc24a1.png)
-![device-2017-01-31-155033](https://cloud.githubusercontent.com/assets/25387287/22469750/57feb696-e7cd-11e6-92a6-0fea0ed41833.png)
-![device-2017-01-31-155058](https://cloud.githubusercontent.com/assets/25387287/22469751/57ffc70c-e7cd-11e6-9da4-187624da688e.png)
+![device-2017-01-31-155013](https://cloud.githubusercontent.com/assets/25387287/22470507/d88fbd1c-e7cf-11e6-947e-fa766b1717b1.png)
+![device-2017-01-31-155033](https://cloud.githubusercontent.com/assets/25387287/22470508/d891bce8-e7cf-11e6-8256-f502ae1cca3f.png)
+![device-2017-01-31-155058](https://cloud.githubusercontent.com/assets/25387287/22470509/d8955c7c-e7cf-11e6-9276-20680494a86a.png)
+![device-2017-01-31-154903](https://cloud.githubusercontent.com/assets/25387287/22470510/d89cf89c-e7cf-11e6-8a47-1b359d69a295.png)
+![device-2017-01-31-154835](https://cloud.githubusercontent.com/assets/25387287/22470512/d8b4505a-e7cf-11e6-9f15-0a78860019a5.png)
+![device-2017-01-31-154930](https://cloud.githubusercontent.com/assets/25387287/22470511/d8a50668-e7cf-11e6-8e65-09ff40e0fa8a.png)
+![device-2017-01-31-154711](https://cloud.githubusercontent.com/assets/25387287/22470513/d8b92594-e7cf-11e6-9757-e3dbd927adbe.png)
