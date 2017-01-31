@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TabActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".TabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +40,7 @@
 
         <activity
             android:name=".SettingsActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeSettings" />
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"

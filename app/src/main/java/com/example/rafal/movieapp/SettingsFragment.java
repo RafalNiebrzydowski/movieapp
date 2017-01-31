@@ -76,9 +76,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         if (key.equals(getString(R.string.pref_style_key))) {
             String themeName = sharedPreferences.getString(getString(R.string.pref_style_key), getString(R.string.pref_style_default));
             if (themeName.equals("dark")) {
-                activity.setTheme((R.style.AppTheme));
+                activity.setTheme((R.style.AppThemeSettings));
             } else {
-                activity.setTheme((R.style.AppTheme2));
+                activity.setTheme((R.style.AppThemeSettings2));
             }
             getActivity().recreate();
         }

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,13 +10,27 @@
         <item name="colorButtonNormal">@color/button_color</item>
 
     </style>
-    <style name="AppTheme2" parent="Theme.AppCompat.Light">
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="colorButtonNormal">@color/primary_material_light</item>
 
     </style>
+    <style name="AppThemeSettings" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="colorButtonNormal">@color/button_color</item>
 
+    </style>
+    <style name="AppThemeSettings2" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="colorButtonNormal">@color/primary_material_light</item>
+
+    </style>
     <style name="TitleLabelFirst">
         <item name="android:background">@color/backgroundItemListTitle</item>
         <item name="android:layout_marginTop">16dp</item>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FF5722</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryDark">#e64a19</color>
     <color name="colorAccent">#08e99e</color>
     <color name="backgroundItemListTitle">@android:color/transparent</color>
     <color name="backgroundItemListMovie">#424242</color>
